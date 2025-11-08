@@ -25,4 +25,8 @@ export class GameEngine {
 		});
 		MessageBus.sendMessage(EventType.STEP_END);
 	}
+
+	reset(): void {
+		this.totalTime = 0;
+	}
 }
