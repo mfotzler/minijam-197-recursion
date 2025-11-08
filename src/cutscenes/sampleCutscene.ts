@@ -16,7 +16,7 @@ const sampleCutscene: Cutscene = {
         'But beware the infinite loop...',
         "Some say it's where legends are born."
       ],
-      transition: 'instant'
+      transition: 'fade'
     }
   ]
 };

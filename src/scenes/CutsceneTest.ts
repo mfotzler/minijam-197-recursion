@@ -1,6 +1,7 @@
 import BaseScene from './BaseScene';
 import sampleCutscene from '../cutscenes/sampleCutscene';
 import { CutsceneSegment } from '../cutscenes/types';
+import * as Phaser from 'phaser';
 
 export default class CutsceneTest extends BaseScene {
   constructor() {
@@ -28,18 +29,44 @@ export default class CutsceneTest extends BaseScene {
     this.textObjs.forEach(obj => obj.destroy());
     this.textObjs = [];
 
-    // Transition effect
+    // Show image (always appears instantly)
+    this.imageObj = this.add.image(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY - 100,
+      segment.imageKey
+    ).setOrigin(0.5);
+
+    // Show text chunks (stacked vertically)
+    segment.textChunks.forEach((text, i) => {
+      const textObj = this.add.text(
+        this.cameras.main.centerX,
+        this.cameras.main.centerY + 100 + i * 50,
+        text,
+        {
+          fontFamily: 'Rubik',
+          fontSize: '32px',
+          color: '#000000',
+          align: 'center',
+        }
+      ).setOrigin(0.5);
+      this.textObjs.push(textObj);
+    });
+
+    // Fade transition for text only
     if (segment.transition === 'fade') {
-      console.log("fading out segment");
-      this.cameras.main.once('camerafadeoutcomplete', () => {
-        console.log("displaying faded segment");
-        this.showSegment(segment);
-        this.cameras.main.fadeIn(300, 0, 0, 0);
+      console.log("fading in text chunks");
+      this.textObjs.forEach(obj => {
+        obj.setAlpha(0);
+        this.tweens.add({
+          targets: obj,
+          alpha: 1,
+          duration: 500,
+          ease: 'Linear',
+          onComplete: () => {
+            console.log("text chunk faded in");
+          }
+        });
       });
-      this.cameras.main.fadeOut(300, 0, 0, 0);
-      console.log("fade out triggered");
-    } else {
-      this.showSegment(segment);
     }
   }
 
