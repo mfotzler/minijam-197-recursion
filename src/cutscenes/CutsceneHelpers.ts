@@ -1,22 +1,24 @@
 import * as Phaser from 'phaser';
 
 export class CutsceneHelpers {
+  static TRANSITION_DURATION = 1000;
   static applyTransition(scene: Phaser.Scene, transition: string, object: Phaser.GameObjects.Image | Phaser.GameObjects.Text) {
+    const duration = CutsceneHelpers.TRANSITION_DURATION;
     switch (transition) {
       case 'fade':
-        CutsceneHelpers.fadeInObject(scene, object, 500);
+        CutsceneHelpers.fadeInObject(scene, object, duration);
         break;
       case 'slide-left':
-        CutsceneHelpers.slideInObject(scene, object, 'left', 500);
+        CutsceneHelpers.slideInObject(scene, object, 'left', duration);
         break;
       case 'slide-right':
-        CutsceneHelpers.slideInObject(scene, object, 'right', 500);
+        CutsceneHelpers.slideInObject(scene, object, 'right', duration);
         break;
       case 'slide-fade-left':
-        CutsceneHelpers.slideFadeInObject(scene, object, 'left', 500);
+        CutsceneHelpers.slideFadeInObject(scene, object, 'left', duration);
         break;
       case 'slide-fade-right':
-        CutsceneHelpers.slideFadeInObject(scene, object, 'right', 500);
+        CutsceneHelpers.slideFadeInObject(scene, object, 'right', duration);
         break;
       case 'instant':
       default:
@@ -24,7 +26,7 @@ export class CutsceneHelpers {
         break;
     }
   }
-  static fadeInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Text | Phaser.GameObjects.Image, duration: number = 500) {
+  static fadeInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Text | Phaser.GameObjects.Image, duration: number = CutsceneHelpers.TRANSITION_DURATION) {
     gameObject.setAlpha(0);
     scene.tweens.add({
       targets: gameObject,
@@ -34,7 +36,7 @@ export class CutsceneHelpers {
     });
   }
 
-  static slideInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Image | Phaser.GameObjects.Text, direction: 'left' | 'right', duration: number = 500) {
+  static slideInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Image | Phaser.GameObjects.Text, direction: 'left' | 'right', duration: number = CutsceneHelpers.TRANSITION_DURATION) {
     const startX = direction === 'left' ? -gameObject.width : scene.scale.width + gameObject.width;
     gameObject.x = startX;
     scene.tweens.add({
@@ -45,7 +47,7 @@ export class CutsceneHelpers {
     });
   }
 
-  static slideFadeInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Image | Phaser.GameObjects.Text, direction: 'left' | 'right', duration: number = 500) {
+  static slideFadeInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Image | Phaser.GameObjects.Text, direction: 'left' | 'right', duration: number = CutsceneHelpers.TRANSITION_DURATION) {
     const startX = direction === 'left' ? -gameObject.width : scene.scale.width + gameObject.width;
     gameObject.x = startX;
     gameObject.setAlpha(0);
