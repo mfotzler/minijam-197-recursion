@@ -5,7 +5,10 @@ import MainMenu from './scenes/MainMenu';
 import PlayScene from './scenes/PlayScene';
 import InMemoryStorageProvider from './messageBus/inMemoryStorageProvider';
 import CutsceneTest from './scenes/CutsceneTest';
+
+
 import IntroCutsceneScene from './scenes/IntroCutsceneScene';
+import ExtraCutsceneScenes from './scenes/ExtraCutsceneScenes';
 
 MessageBus.initialize(new InMemoryStorageProvider());
 
@@ -20,7 +23,16 @@ new Phaser.Game({
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  scene: [MainMenu, CutsceneTest, IntroCutsceneScene, PlayScene],
+  scene: [
+    MainMenu,
+    CutsceneTest,
+    IntroCutsceneScene,
+  ExtraCutsceneScenes.VisitorsUnderAttackScene,
+  ExtraCutsceneScenes.MeetingDowhileScene,
+  ExtraCutsceneScenes.FinalConfrontationScene,
+  ExtraCutsceneScenes.EpilogueScene,
+    PlayScene
+  ],
   physics: {
     default: 'arcade',
     arcade: {
