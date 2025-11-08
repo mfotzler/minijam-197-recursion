@@ -19,14 +19,17 @@ export class PushManBehavior implements IEnemyBehavior {
             body.velocity.add({ x: -15, y: 0 });
         }
 
-        if (enemy.stateTime > 30 && enemy.stateTime < 35) {
+        if (enemy.stateTime > 30 && enemy.stateTime < 38) {
             body.velocity.add({ x: 0, y: -50 });
-        }
-        if (enemy.stateTime == 40) {
+        } else if (enemy.stateTime == 60) {
             body.setVelocity(0, 0);
+        } else if (enemy.stateTime >= 60 && enemy.stateTime < 90) {
+            body.velocity.add({ x: 0, y: 20 });
         }
 
-        if (enemy.stateTime >= 90) {
+        if (enemy.stateTime == 90) {
+            body.setVelocity(0, 0);
+        } else if (enemy.stateTime >= 120) {
             enemy.stateTime = 0;
         }
     }

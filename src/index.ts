@@ -15,10 +15,10 @@ new Phaser.Game({
   backgroundColor: '#aaaaee',
   title: 'Minijam Template',
   scale: {
-    width: 1280,
-    height: 720,
+    width: 960,
+    height: 540,
     mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH
+    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   scene: [MainMenu, CutsceneTest, IntroCutsceneScene, PlayScene],
   physics: {

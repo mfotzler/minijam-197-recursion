@@ -12,6 +12,7 @@ import InputSystem from "../systems/InputSystem";
 import { MovementSystem } from "../systems/MovementSystem";
 import { PlaybackSystem } from "../systems/PlaybackSystem";
 import { DebugRenderer } from "../systems/renderer/DebugRenderer";
+import { SpriteRenderer } from "../systems/renderer/SpriteRenderer";
 import RenderSystem from "../systems/RenderSystem";
 import BaseScene from "./BaseScene";
 
@@ -38,7 +39,7 @@ export default class PlayScene extends BaseScene {
         this.world = new RecursionWorld(this);
 
         this.playbackSystem = new PlaybackSystem();
-        this.renderSystem = new RenderSystem(this, this.world.entityProvider, new DebugRenderer(this));
+        this.renderSystem = new RenderSystem(this, this.world.entityProvider, new SpriteRenderer(this));
 
         this.engine.addSystem(this.playbackSystem);
         this.engine.addSystem(this.renderSystem);
@@ -52,6 +53,7 @@ export default class PlayScene extends BaseScene {
     }
 
     create(): void {
+        this.anims.createFromAseprite('PushMan');
 		this.initializeMapAndCameras();
 
         this.recurse();

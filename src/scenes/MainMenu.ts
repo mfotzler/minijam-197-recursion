@@ -9,12 +9,10 @@ export default class MainMenu extends BaseScene {
 
 	preload() {
 		super.preload();
-		this.load.atlas('PushMan', 'assets/push_man.png', 'assets/push_man.json');
+		this.load.aseprite('PushMan', 'assets/push_man.png', 'assets/push_man.json');
 	}
 
 	create() {
-		this.anims.createFromAseprite('PushMan');
-		
 		this.add.text(
 			this.cameras.main.centerX,
 			this.cameras.main.centerY - 60,

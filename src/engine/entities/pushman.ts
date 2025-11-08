@@ -8,7 +8,8 @@ export const PushMan: RecursionComponents = {
         spriteSheet: 'PushMan',
         width: 128,
         height: 128,
-        fillColor: 0x604010
+        fillColor: 0x604010,
+        currentAnimation: 'Push'
     },
     enemy: {
         behaviorType: PushManBehavior.key

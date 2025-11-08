@@ -28,7 +28,7 @@ export class SpriteRenderer<TComponents extends RenderableEntityComponents>
 
 		if (render.currentAnimation) {
 			if (this.sprites[entity.id].anims?.currentAnim?.key !== render.currentAnimation) {
-				this.sprites[entity.id].anims.play(render.currentAnimation, true);
+				this.sprites[entity.id].anims.play({ key: render.currentAnimation, repeat: -1 }, true);
 				if (render.tickDelay) {
 					this.sprites[entity.id].anims.nextTick = render.tickDelay;
 				}
