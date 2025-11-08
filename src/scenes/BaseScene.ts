@@ -10,6 +10,10 @@ export default class BaseScene extends Phaser.Scene {
 	private isFading = false;
 	protected engine: GameEngine;
 
+	preload() {
+		this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
+	}
+
 	init(_data?: unknown) {
 		MessageBus.clearAllSubscribers();
 
