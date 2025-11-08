@@ -13,6 +13,27 @@ export default class BaseScene extends Phaser.Scene {
 	preload() {
 		this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
 		this.load.image('segfault-squad', 'assets/segfault_squad.png');
+
+		this.load.bitmapFont(
+			'rubik',
+			'assets/fonts/rubik-font_0.png',
+			'assets/fonts/rubik-font.fnt'
+		);
+		this.load.bitmapFont(
+			'main-font',
+			'assets/fonts/minogram_6x10.png',
+			'assets/fonts/minogram_6x10.xml'
+		);
+		this.load.bitmapFont(
+			'main-font-black',
+			'assets/fonts/minogram_6x10_black.png',
+			'assets/fonts/minogram_6x10.xml'
+		);
+		this.load.bitmapFont(
+			'main-font-contrast',
+			'assets/fonts/minogram_6x10_contrast.png',
+			'assets/fonts/minogram_6x10.xml'
+		);
 	}
 
 	init(_data?: unknown) {

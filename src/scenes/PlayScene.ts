@@ -31,7 +31,7 @@ export default class PlayScene extends BaseScene {
     }
 
     create(): void {
-		this.world.createEntity(Player, { position: { x: 0, y: 0} });
+		
 	}
 
     update(time: number, delta: number): void {
@@ -47,5 +47,7 @@ export default class PlayScene extends BaseScene {
         this.engine.addSystem(new MovementSystem(this.world.entityProvider));
 		this.engine.addSystem(new CollisionSystem(this, this.world));
         this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
+
+        this.world.createEntity(Player, { position: { x: 0, y: 0} });
     }
 }
