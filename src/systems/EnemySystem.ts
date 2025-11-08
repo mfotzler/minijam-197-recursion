@@ -19,7 +19,7 @@ export class EnemySystem implements System {
 				if (entity.enemy.behaviorType) {
 					this.behaviors[enemy.behaviorType] ??= EnemyBehaviorFactory.create(enemy.behaviorType);
 
-					this.behaviors[enemy.behaviorType].process(this.world, entity);
+					this.behaviors[enemy.behaviorType].process(this.world, entity, delta);
 				}
 				enemy.iframes = Math.max(0, (enemy.iframes ?? 0) - delta);
 			}

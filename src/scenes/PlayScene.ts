@@ -65,6 +65,7 @@ export default class PlayScene extends BaseScene {
 
     private initializeMapAndCameras(): void {
 		this.world.initializeMap('map1');
+        this.world.collisionLayer.renderDebug(this.add.graphics());
 
 		this.cameras.main.setBounds(0, 0, this.world.map.widthInPixels, this.world.map.heightInPixels);
 	}
@@ -77,6 +78,6 @@ export default class PlayScene extends BaseScene {
         this.playbackSystem.restart();
 
         this.world.createEntity(Player, { position: { x: 100, y: 100} });
-        this.world.createEntity(PushMan, { position: { x: 1000, y: 500 } });
+        this.world.createEntity(PushMan, { position: { x: 1000, y: 150 } });
     }
 }

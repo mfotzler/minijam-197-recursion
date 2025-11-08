@@ -4,7 +4,7 @@ import NoOpEnemyBehavior from './NoOpEnemyBehavior';
 import { PushManBehavior } from './PushManBehavior';
 
 export interface IEnemyBehavior {
-	process(world: RecursionWorld, entity: EntityDefinition<RecursionComponents>): void;
+	process(world: RecursionWorld, entity: EntityDefinition<RecursionComponents>, delta: number): void;
 }
 
 export default class EnemyBehaviorFactory {

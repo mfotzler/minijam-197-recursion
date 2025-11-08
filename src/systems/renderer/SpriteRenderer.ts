@@ -43,6 +43,7 @@ export class SpriteRenderer<TComponents extends RenderableEntityComponents>
 	}
 
 	public destroy(entityId: string, renderable: Renderable): void {
+		renderable.body.gameObject.destroy();
 		this.sprites[entityId].destroy();
 	}
 }

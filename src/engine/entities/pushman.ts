@@ -4,6 +4,7 @@ import { RecursionComponents } from "./types";
 export const PushMan: RecursionComponents = {
     position: { x: 0, y: 0 },
     movement: { hasGravity: false },
+    collision: { withEnvironment: true },
     render: {
         spriteSheet: 'PushMan',
         width: 128,
