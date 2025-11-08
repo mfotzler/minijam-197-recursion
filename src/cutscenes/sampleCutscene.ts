@@ -3,7 +3,7 @@ import { Cutscene } from './types';
 const sampleCutscene: Cutscene = {
   segments: [
     {
-      imageKey: 'intro1',
+      imageKey: 'segfault-squad',
       textChunks: [
         'In the beginning, there was recursion.',
         'It called itself, again and again.'
@@ -11,7 +11,7 @@ const sampleCutscene: Cutscene = {
       transition: 'fade'
     },
     {
-      imageKey: 'intro2',
+      imageKey: 'segfault-squad',
       textChunks: [
         'But beware the infinite loop...',
         "Some say it's where legends are born."

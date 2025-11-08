@@ -12,6 +12,7 @@ export default class BaseScene extends Phaser.Scene {
 
 	preload() {
 		this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
+		this.load.image('segfault-squad', 'assets/segfault_squad.png');
 	}
 
 	init(_data?: unknown) {
