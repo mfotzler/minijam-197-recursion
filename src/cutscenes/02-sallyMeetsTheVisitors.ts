@@ -48,7 +48,8 @@ const sallyMeetsTheVisitors: Cutscene = {
     {
       imageKey: 'spike',
       textChunks: [
-        "We need gems to get coins. We can use them to fight or keep them as treasure!"
+        "We need gems to get coins.",
+        "We can use them to fight or keep them as treasure!"
       ],
       imageTransition: 'fade',
       textTransition: 'fade'

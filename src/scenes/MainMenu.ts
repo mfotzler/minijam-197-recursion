@@ -78,8 +78,5 @@ export default class MainMenu extends BaseScene {
 		UIHelpers.addButton(this, leftX, baseY + spacing * 5, 'Epilogue', () => {
 			this.fadeToScene('Epilogue');
 		});
-		UIHelpers.addButton(this, leftX, baseY + spacing * 6, 'Sample Cutscene', () => {
-			this.fadeToScene('SampleCutscene');
-		});
 	}
 }

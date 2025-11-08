@@ -32,7 +32,7 @@ const introCutscene: Cutscene = {
         {
             imageKey: 'garbage-collectors',
             textChunks: [
-                "The fairy's loyal Garbage Collectors hunt those who can no longer recurse,",
+                "The fairy's Garbage Collectors hunt those who can no longer recurse,",
                 'imprisoning them until they fade from existence.'
             ],
             imageTransition: 'fade',

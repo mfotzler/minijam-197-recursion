@@ -55,7 +55,8 @@ const epilogue: Cutscene = {
     {
       imageKey: 'none',
       textChunks: [
-        "Peace was restored to the land. The base cases were returned and the functions were free to recurse again.",
+        "Peace was restored to the land.",
+        "The base cases were returned and the functions recurse again.",
         "Thank you for playing!"
       ],
       imageTransition: 'fade',
