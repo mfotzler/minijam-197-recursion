@@ -49,13 +49,16 @@ export default class PlayScene extends BaseScene {
         this.engine.addSystem(new InputSystem(this));
         this.engine.addSystem(new EnemySystem(this, this.world));
 
-        MessageBus.subscribe(EventType.RECURSE_GAME, this.recurse.bind(this));
+        MessageBus.subscribe(EventType.RECURSE_GAME, () => {
+            this.fadeToScene('Recurse');
+        });
     }
 
-    create(): void {
+    create({ action }): void {
         this.anims.createFromAseprite('PushMan');
 		this.initializeMapAndCameras();
 
+        MessageBus.sendMessage(EventType.CHANGE_ACTION, action);
         this.recurse();
 	}
 

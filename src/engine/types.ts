@@ -48,10 +48,17 @@ export enum EventType {
 	ENTITY_SPRITE_ADDED = 'entitySpriteAdded',
 	RECORD_INPUT = 'recordInput',
 	ACT_INPUT = 'actInput',
-	RECURSE_GAME = 'recurseGame'
+	RECURSE_GAME = 'recurseGame',
+	CHANGE_ACTION = 'changeAction'
 }
 
 export enum InputType {
 	RunStart,
 	RunStop,
+	Jump
+}
+
+export enum ActionType {
+	Run,
+	Jump
 }

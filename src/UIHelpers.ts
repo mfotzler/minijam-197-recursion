@@ -17,7 +17,7 @@ export default class UIHelpers {
 		text: string,
 		onClick: () => void
 	): Phaser.GameObjects.NineSlice {
-		const button = scene.add.nineslice(0, 0, 'textures', 'menu-button', 420, 80, 20, 20, 20, 20);
+		const button = scene.add.nineslice(0, 0, 'textures', 'menu-button', 169, 69, 20, 20, 20, 20);
 		button.setPosition(x, y);
 		button.setInteractive();
 		button.on('pointerdown', onClick);

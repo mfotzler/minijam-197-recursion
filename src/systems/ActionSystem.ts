@@ -16,15 +16,22 @@ export class ActionSystem implements System {
         switch (input) {
             case InputType.RunStart:
                 if (player) {
-                    const { transform, body } = player.render.sprite;
+                    const { body } = player.render.sprite;
                     body.velocity.x = 100;
                 }
                 break;
 
             case InputType.RunStop:
                 if (player) {
-                    const { transform, body } = player.render.sprite;
+                    const { body } = player.render.sprite;
                     body.velocity.x = 0;
+                }
+                break;
+
+            case InputType.Jump:
+                if (player) {
+                    const { body } = player.render.sprite;
+                    body.velocity.y = -200;
                 }
         }
     }

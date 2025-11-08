@@ -1,9 +1,10 @@
 import * as Phaser from 'phaser';
-import { EventType, InputType, StepData, System } from '../engine/types';
+import { ActionType, EventType, InputType, StepData, System } from '../engine/types';
 import MessageBus from '../messageBus/MessageBus';
 
 export default class InputSystem implements System {
     private totalTime = 0;
+    private actionType: ActionType;
 
 	constructor(
 		scene: Phaser.Scene
@@ -23,6 +24,10 @@ export default class InputSystem implements System {
                 this.onRightMouseUp();
             }
         })
+
+        MessageBus.subscribe(EventType.CHANGE_ACTION, (e) => {
+            this.actionType = e;
+        })
 	}
 
 	step({totalTime}: StepData): Promise<void> | void {
@@ -30,13 +35,16 @@ export default class InputSystem implements System {
 	}
 
     private onLeftMouseDown() {
-        MessageBus.sendMessage(EventType.ACT_INPUT, { input: InputType.RunStart });
-        MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStart, time: this.totalTime });
+        const input = this.actionType == ActionType.Run ? InputType.RunStart : InputType.Jump;
+        MessageBus.sendMessage(EventType.ACT_INPUT, { input });
+        MessageBus.sendMessage(EventType.RECORD_INPUT, { input, time: this.totalTime });
     }
 
     private onLeftMouseUp() {
-        MessageBus.sendMessage(EventType.ACT_INPUT, { input: InputType.RunStop });
-        MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStop, time: this.totalTime });
+        if (this.actionType == ActionType.Jump) return;
+        const input = InputType.RunStop;
+        MessageBus.sendMessage(EventType.ACT_INPUT, { input });
+        MessageBus.sendMessage(EventType.RECORD_INPUT, { input, time: this.totalTime });
     }
 
     private onRightMouseDown() {

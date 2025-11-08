@@ -7,6 +7,7 @@ import InMemoryStorageProvider from './messageBus/inMemoryStorageProvider';
 import CutsceneTest from './scenes/CutsceneTest';
 
 import ExtraCutsceneScenes from './scenes/CutsceneScenes';
+import RecurseScene from './scenes/RecurseScene';
 
 MessageBus.initialize(new InMemoryStorageProvider());
 
@@ -30,7 +31,8 @@ new Phaser.Game({
 		ExtraCutsceneScenes.MeetingDowhileScene,
 		ExtraCutsceneScenes.FinalConfrontationScene,
 		ExtraCutsceneScenes.EpilogueScene,
-    PlayScene
+    PlayScene,
+    RecurseScene
   ],
   physics: {
     default: 'arcade',
