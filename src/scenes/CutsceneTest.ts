@@ -21,46 +21,54 @@ export default class CutsceneTest extends BaseScene {
   }
 
   currentSegment: number;
-  imageObj?: Phaser.GameObjects.Image;
-  textObjs: Phaser.GameObjects.Text[] = [];
+  imageObject?: Phaser.GameObjects.Image;
+  textObjects: Phaser.GameObjects.Text[] = [];
 
   playSegment(segment: CutsceneSegment) {
-    // Remove previous objects
-    if (this.imageObj) this.imageObj.destroy();
-    this.textObjs.forEach(obj => obj.destroy());
-    this.textObjs = [];
+    this.clearSegmentObjects();
+  this.imageObject = this.createImage(segment);
+  this.textObjects = this.createTextChunks(segment);
+  }
 
-    // IMAGE TRANSITION
-    this.imageObj = this.add.image(
+  clearSegmentObjects() {
+  if (this.imageObject) this.imageObject.destroy();
+  this.textObjects.forEach(object => object.destroy());
+  this.textObjects = [];
+  }
+
+  createImage(segment: CutsceneSegment): Phaser.GameObjects.Image {
+    const imageObject = this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY - 100,
       segment.imageKey
     ).setOrigin(0.5);
     switch (segment.imageTransition) {
       case 'fade':
-        CutsceneHelpers.fadeInObject(this, this.imageObj, 500);
+        CutsceneHelpers.fadeInObject(this, imageObject, 500);
         break;
       case 'slide-left':
-        CutsceneHelpers.slideInObject(this, this.imageObj, 'left', 500);
+        CutsceneHelpers.slideInObject(this, imageObject, 'left', 500);
         break;
       case 'slide-right':
-        CutsceneHelpers.slideInObject(this, this.imageObj, 'right', 500);
+        CutsceneHelpers.slideInObject(this, imageObject, 'right', 500);
         break;
       case 'slide-fade-left':
-        CutsceneHelpers.slideFadeInObject(this, this.imageObj, 'left', 500);
+        CutsceneHelpers.slideFadeInObject(this, imageObject, 'left', 500);
         break;
       case 'slide-fade-right':
-        CutsceneHelpers.slideFadeInObject(this, this.imageObj, 'right', 500);
+        CutsceneHelpers.slideFadeInObject(this, imageObject, 'right', 500);
         break;
       case 'instant':
       default:
         // No animation
         break;
     }
+    return imageObject;
+  }
 
-    // TEXT TRANSITION
-    segment.textChunks.forEach((text, i) => {
-      const textObj = this.add.text(
+  createTextChunks(segment: CutsceneSegment): Phaser.GameObjects.Text[] {
+    return segment.textChunks.map((text, i) => {
+      const textObject = this.add.text(
         this.cameras.main.centerX,
         this.cameras.main.centerY + 100 + i * 50,
         text,
@@ -71,34 +79,34 @@ export default class CutsceneTest extends BaseScene {
           align: 'center',
         }
       ).setOrigin(0.5);
-      this.textObjs.push(textObj);
       switch (segment.textTransition) {
         case 'fade':
-          CutsceneHelpers.fadeInObject(this, textObj, 500);
+          CutsceneHelpers.fadeInObject(this, textObject, 500);
           break;
         case 'slide-left':
-          CutsceneHelpers.slideInObject(this, textObj, 'left', 500);
+          CutsceneHelpers.slideInObject(this, textObject, 'left', 500);
           break;
         case 'slide-right':
-          CutsceneHelpers.slideInObject(this, textObj, 'right', 500);
+          CutsceneHelpers.slideInObject(this, textObject, 'right', 500);
           break;
         case 'slide-fade-left':
-          CutsceneHelpers.slideFadeInObject(this, textObj, 'left', 500);
+          CutsceneHelpers.slideFadeInObject(this, textObject, 'left', 500);
           break;
         case 'slide-fade-right':
-          CutsceneHelpers.slideFadeInObject(this, textObj, 'right', 500);
+          CutsceneHelpers.slideFadeInObject(this, textObject, 'right', 500);
           break;
         case 'instant':
         default:
           // No animation
           break;
       }
+      return textObject;
     });
   }
 
   showSegment(segment: CutsceneSegment) {
     // Show image (centered)
-    this.imageObj = this.add.image(
+    this.imageObject = this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY - 100,
       segment.imageKey
@@ -106,7 +114,7 @@ export default class CutsceneTest extends BaseScene {
 
     // Show text chunks (stacked vertically)
     segment.textChunks.forEach((text, i) => {
-      const textObj = this.add.text(
+      const textObject = this.add.text(
         this.cameras.main.centerX,
         this.cameras.main.centerY + 100 + i * 50,
         text,
@@ -117,7 +125,7 @@ export default class CutsceneTest extends BaseScene {
           align: 'center',
         }
       ).setOrigin(0.5);
-      this.textObjs.push(textObj);
+      this.textObjects.push(textObject);
     });
   }
 
