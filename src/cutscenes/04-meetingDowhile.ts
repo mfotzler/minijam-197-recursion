@@ -13,7 +13,7 @@ const meetingDowhile: Cutscene = {
     {
       imageKey: 'spike',
       textChunks: [
-        "Master Dowhile...  we've suffered greatly at the hands of that blasted recursion fairy.",
+        "Master Dowhile...  we've suffered at the hands of the recursion fairy.",
         "We can't beat her at recursion. What should we do?"
       ],
       imageTransition: 'fade',

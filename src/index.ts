@@ -6,9 +6,7 @@ import PlayScene from './scenes/PlayScene';
 import InMemoryStorageProvider from './messageBus/inMemoryStorageProvider';
 import CutsceneTest from './scenes/CutsceneTest';
 
-
-import IntroCutsceneScene from './scenes/IntroCutsceneScene';
-import ExtraCutsceneScenes from './scenes/ExtraCutsceneScenes';
+import ExtraCutsceneScenes from './scenes/CutsceneScenes';
 
 MessageBus.initialize(new InMemoryStorageProvider());
 
@@ -26,11 +24,12 @@ new Phaser.Game({
   scene: [
     MainMenu,
     CutsceneTest,
-    IntroCutsceneScene,
-  ExtraCutsceneScenes.VisitorsUnderAttackScene,
-  ExtraCutsceneScenes.MeetingDowhileScene,
-  ExtraCutsceneScenes.FinalConfrontationScene,
-  ExtraCutsceneScenes.EpilogueScene,
+		ExtraCutsceneScenes.IntroCutsceneScene,
+		ExtraCutsceneScenes.SallyMeetsTheVisitorsScene,
+		ExtraCutsceneScenes.VisitorsUnderAttackScene,
+		ExtraCutsceneScenes.MeetingDowhileScene,
+		ExtraCutsceneScenes.FinalConfrontationScene,
+		ExtraCutsceneScenes.EpilogueScene,
     PlayScene
   ],
   physics: {

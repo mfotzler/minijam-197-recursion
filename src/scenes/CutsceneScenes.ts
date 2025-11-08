@@ -5,7 +5,6 @@ import visitorsUnderAttack from '../cutscenes/03-visitorsUnderAttack';
 import meetingDowhile from '../cutscenes/04-meetingDowhile';
 import finalConfrontation from '../cutscenes/05-finalConfrontation';
 import epilogue from '../cutscenes/06-epilogue';
-import sampleCutscene from '../cutscenes/sampleCutscene';
 import CutsceneBaseScene from './CutsceneBaseScene';
 export class IntroCutsceneScene extends CutsceneBaseScene {
   constructor() {
@@ -18,13 +17,6 @@ export class SallyMeetsTheVisitorsScene extends CutsceneBaseScene {
     super('SallyMeetsTheVisitors', sallyMeetsTheVisitors);
   }
 }
-
-export class SampleCutsceneScene extends CutsceneBaseScene {
-  constructor() {
-    super('SampleCutscene', sampleCutscene);
-  }
-}
-
 
 export class VisitorsUnderAttackScene extends CutsceneBaseScene {
   constructor() {
@@ -51,6 +43,8 @@ export class EpilogueScene extends CutsceneBaseScene {
 }
 
 export default {
+  IntroCutsceneScene,
+  SallyMeetsTheVisitorsScene,
   VisitorsUnderAttackScene,
   MeetingDowhileScene,
   FinalConfrontationScene,
