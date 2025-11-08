@@ -2,6 +2,7 @@ import { Direction } from "../types";
 import { RecursionComponents } from "./types";
 
 export const Player: RecursionComponents = {
+    isPlayer: true,
     position: { x: 0, y: 0 },
     movement: { hasGravity: true },
     collision: { },

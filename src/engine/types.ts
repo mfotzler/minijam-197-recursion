@@ -44,5 +44,11 @@ export enum EventType {
 	/**
 	 * Occurs when an entity's sprite has been created by the render system and added to the scene.
 	 */
-	ENTITY_SPRITE_ADDED = 'entitySpriteAdded'
+	ENTITY_SPRITE_ADDED = 'entitySpriteAdded',
+	RECORD_INPUT = 'recordInput'
+}
+
+export enum InputType {
+	RunStart,
+	RunStop,
 }
