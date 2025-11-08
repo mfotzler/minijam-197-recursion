@@ -17,7 +17,7 @@ export class ActionSystem implements System {
             case InputType.RunStart:
                 if (player) {
                     const { transform, body } = player.render.sprite;
-                    body.velocity.x = 30;
+                    body.velocity.x = 100;
                 }
                 break;
 

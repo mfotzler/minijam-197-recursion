@@ -5,7 +5,7 @@ export const Player: RecursionComponents = {
     isPlayer: true,
     position: { x: 0, y: 0 },
     movement: { hasGravity: true },
-    collision: { },
+    collision: { withEnvironment: true },
     facing: { direction: Direction.RIGHT },
     render: {
         spriteKey: 'Player',

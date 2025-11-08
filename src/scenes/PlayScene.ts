@@ -24,6 +24,13 @@ export default class PlayScene extends BaseScene {
         super('Play');
     }
 
+    preload() {
+        super.preload();
+
+        this.load.tilemapTiledJSON('map1', 'assets/maps/1.json');
+		this.load.image('tiles', 'assets/sci-fi-platformer-tiles-32x32-extension.png');
+    }
+
     init() {
         super.init();
         
@@ -42,16 +49,22 @@ export default class PlayScene extends BaseScene {
         this.engine.addSystem(new EnemySystem(this, this.world));
 
         MessageBus.subscribe(EventType.RECURSE_GAME, this.recurse.bind(this));
-
-        this.recurse();
     }
 
     create(): void {
-		
+		this.initializeMapAndCameras();
+
+        this.recurse();
 	}
 
     update(time: number, delta: number): void {
 		this.engine.step(delta);
+	}
+
+    private initializeMapAndCameras(): void {
+		this.world.initializeMap('map1');
+
+		this.cameras.main.setBounds(0, 0, this.world.map.widthInPixels, this.world.map.heightInPixels);
 	}
 
     private recurse() {

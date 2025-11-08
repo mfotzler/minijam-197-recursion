@@ -10,7 +10,7 @@ export class World<TComponents> {
 	wallLayer: Phaser.Tilemaps.TilemapLayer;
 	playerId: string;
 
-	constructor(private scene: BaseScene) {
+	constructor(protected scene: BaseScene) {
 		this.entityProvider = new EntityCollection();
 	}
 

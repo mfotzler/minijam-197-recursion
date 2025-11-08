@@ -1,25 +1,23 @@
 import { EventType, System } from '../engine/types';
 import BaseScene from '../scenes/BaseScene';
 import MessageBus from '../messageBus/MessageBus';
-import * as Phaser from 'phaser';
-import type { World } from '../engine/world';
+import { RecursionWorld } from '../recursionWorld';
 import { RecursionComponents } from '../engine/entities/types';
 
 export class CollisionSystem implements System {
 	constructor(
 		scene: BaseScene,
-		private world: World<RecursionComponents>
+		private world: RecursionWorld
 	) {
 		MessageBus.subscribe(
 			EventType.ENTITY_SPRITE_ADDED,
-			({ id }: { id: string; }) => {
-				const entity = world.entityProvider.getEntity(id);
-				if (!entity.collision) return;
+			({ entity }: { entity: RecursionComponents }) => {
+				if (!entity.collision || !entity.render?.sprite) return;
 
-				// if (entity.collision.withEnvironment) {
-				// 	scene.physics.add.existing(entitySprite.body);
-				// 	scene.physics.add.collider(entitySprite, world.wallLayer);
-				// }
+				if (entity.collision.withEnvironment) {
+					scene.physics.add.existing(entity.render.sprite.body.gameObject);
+					scene.physics.add.collider(entity.render.sprite.body.gameObject, world.collisionLayer);
+				}
 			}
 		);
 	}

@@ -1,4 +1,4 @@
-import { Direction, EventType, StepData, System } from '../engine/types';
+import { Direction, StepData, System } from '../engine/types';
 import { EntityProvider } from '../engine/world/types';
 import { PHYSICS_CONSTANTS } from '../constants';
 import { RecursionComponents } from '../engine/entities/types';
@@ -10,7 +10,7 @@ export class MovementSystem implements System {
 	) {}
 
 	private calculateDownwardVelocity(initialVelocity: number, delta: number) {
-		const newVelocity = initialVelocity + this.gravity * delta;
+		const newVelocity = initialVelocity + this.gravity * (delta / 1000);
 		return Math.min(newVelocity, PHYSICS_CONSTANTS.MAX_DOWNWARD_VELOCITY);
 	}
 
