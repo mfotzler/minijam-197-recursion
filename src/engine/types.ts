@@ -3,6 +3,7 @@ import type { GameEngine } from './gameEngine';
 
 export interface StepData {
 	delta: number;
+	totalTime: number;
 }
 
 export interface System {
@@ -45,7 +46,9 @@ export enum EventType {
 	 * Occurs when an entity's sprite has been created by the render system and added to the scene.
 	 */
 	ENTITY_SPRITE_ADDED = 'entitySpriteAdded',
-	RECORD_INPUT = 'recordInput'
+	RECORD_INPUT = 'recordInput',
+	ACT_INPUT = 'actInput',
+	RECURSE_GAME = 'recurseGame'
 }
 
 export enum InputType {

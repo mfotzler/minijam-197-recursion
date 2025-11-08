@@ -53,4 +53,5 @@ export interface RecursionComponents {
 	facing?: FacingComponentBase;
 	collision?: CollisionComponent;
 	render?: RenderComponentBase;
+	isPlayer?: boolean;
 }
