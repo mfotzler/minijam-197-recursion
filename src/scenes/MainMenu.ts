@@ -66,5 +66,31 @@ export default class MainMenu extends BaseScene {
 				this.fadeToScene('Play');
 			}
 		);
+
+		// Side buttons for cutscene testing
+		const leftX = 120;
+		const baseY = this.cameras.main.centerY - 210;
+		const spacing = 60;
+		UIHelpers.addButton(this, leftX, baseY + spacing * 0, 'Intro', () => {
+			this.fadeToScene('IntroCutscene');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 1, 'Sally Meets Visitors', () => {
+			this.fadeToScene('SallyMeetsTheVisitors');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 2, 'Visitors Under Attack', () => {
+			this.fadeToScene('VisitorsUnderAttack');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 3, 'Meeting Dowhile', () => {
+			this.fadeToScene('MeetingDowhile');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 4, 'Final Confrontation', () => {
+			this.fadeToScene('FinalConfrontation');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 5, 'Epilogue', () => {
+			this.fadeToScene('Epilogue');
+		});
+		UIHelpers.addButton(this, leftX, baseY + spacing * 6, 'Sample Cutscene', () => {
+			this.fadeToScene('SampleCutscene');
+		});
 	}
 }
