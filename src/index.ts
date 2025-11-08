@@ -1,10 +1,11 @@
 import * as Phaser from 'phaser';
 import MessageBus from './messageBus/MessageBus';
-import getRealStorageProvider from './messageBus/realStorageProvider';
 import MainMenu from './scenes/MainMenu';
+import PlayScene from './scenes/PlayScene';
+import InMemoryStorageProvider from './messageBus/inMemoryStorageProvider';
 import CutsceneTest from './scenes/CutsceneTest';
 
-MessageBus.initialize(getRealStorageProvider());
+MessageBus.initialize(new InMemoryStorageProvider());
 
 new Phaser.Game({
   type: Phaser.AUTO,
@@ -17,12 +18,13 @@ new Phaser.Game({
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
-  scene: [MainMenu, CutsceneTest],
+  scene: [MainMenu, CutsceneTest, PlayScene],
   physics: {
     default: 'arcade',
     arcade: {
       gravity: { x: 0, y: 0 },
       debug: false
     }
-  }
+  },
+  disableContextMenu: true
 });

@@ -29,7 +29,7 @@ export default class RenderSystem<TComponents> implements System {
 					const entitySprite = this.renderer.create(entity);
 					this.sprites[id] = entitySprite;
 					render.sprite = entitySprite;
-					MessageBus.sendMessage(EventType.ENTITY_SPRITE_ADDED, { id, entitySprite, entity });
+					MessageBus.sendMessage(EventType.ENTITY_SPRITE_ADDED, { id, entity });
 				}
 			}
 		);
