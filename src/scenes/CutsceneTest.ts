@@ -31,9 +31,10 @@ export default class CutsceneTest extends BaseScene {
   }
 
   clearSegmentObjects() {
-  if (this.imageObject) this.imageObject.destroy();
-  this.textObjects.forEach(object => object.destroy());
-  this.textObjects = [];
+    if (this.imageObject) 
+      this.imageObject.destroy();
+    this.textObjects.forEach(object => object.destroy());
+    this.textObjects = [];
   }
 
   createImage(segment: CutsceneSegment): Phaser.GameObjects.Image {
@@ -65,14 +66,19 @@ export default class CutsceneTest extends BaseScene {
   }
 
   showSegment(segment: CutsceneSegment) {
-    // Show image (centered)
+    this.showImage(segment);
+    this.showText(segment);
+  }
+
+  showImage(segment: CutsceneSegment) {
     this.imageObject = this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY - 100,
       segment.imageKey
     ).setOrigin(0.5);
+  }
 
-    // Show text chunks (stacked vertically)
+  showText(segment: CutsceneSegment) {
     segment.textChunks.forEach((text, i) => {
       const textObject = this.add.text(
         this.cameras.main.centerX,
