@@ -2,7 +2,7 @@ import type { Renderable } from '../../systems/renderer/types';
 import { Direction } from '../types';
 
 export interface RenderComponentBase {
-	spriteKey: string;
+	spriteKey?: string;
 	spriteSheet?: string;
 	sprite?: Renderable;
 	scale?: number;
@@ -19,7 +19,8 @@ export interface FacingComponentBase {
 
 export interface RenderableEntityComponents {
 	render: RenderComponentBase;
-	facing: FacingComponentBase;
+	position?: PositionComponent;
+	facing?: FacingComponentBase;
 }
 
 export type EntityDefinition<TComponents> = TComponents & {
@@ -29,7 +30,7 @@ export type EntityDefinition<TComponents> = TComponents & {
 export const isRenderableEntity = <TComponents>(
 	entity: EntityDefinition<TComponents>
 ): entity is EntityDefinition<TComponents & RenderableEntityComponents> => {
-	return 'render' in entity && 'facing' in entity;
+	return 'render' in entity;
 };
 
 export interface PositionComponent {
@@ -47,6 +48,12 @@ export interface CollisionComponent {
 	withPlayer?: boolean;
 }
 
+export interface EnemyComponent {
+	behaviorType: string;
+	iframes?: number;
+	stateTime?: number;
+}
+
 export interface RecursionComponents {
 	position?: PositionComponent;
 	movement?: MovementComponent;
@@ -54,4 +61,5 @@ export interface RecursionComponents {
 	collision?: CollisionComponent;
 	render?: RenderComponentBase;
 	isPlayer?: boolean;
+	enemy?: EnemyComponent;
 }

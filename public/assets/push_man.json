@@ -1,0 +1,50 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 79, "h": 104 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 6, "w": 79, "h": 104 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 500
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 79, "y": 0, "w": 89, "h": 104 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 6, "w": 89, "h": 104 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 168, "y": 0, "w": 100, "h": 104 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 6, "w": 100, "h": 104 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 268, "y": 0, "w": 118, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 6, "w": 118, "h": 105 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 500
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.x-dev",
+  "image": "push_man.png",
+  "format": "I8",
+  "size": { "w": 386, "h": 105 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Push", "from": 0, "to": 3, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

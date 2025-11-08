@@ -24,9 +24,10 @@ export default class RenderSystem<TComponents> implements System {
 					return;
 				}
 
-				const { id, render } = entity;
+				const { id, render, position } = entity;
 				if (!this.sprites[id] && render) {
 					const entitySprite = this.renderer.create(entity);
+					entitySprite.transform.setPosition(position?.x ?? 0, position?.y ?? 0);
 					this.sprites[id] = entitySprite;
 					render.sprite = entitySprite;
 					MessageBus.sendMessage(EventType.ENTITY_SPRITE_ADDED, { id, entity });

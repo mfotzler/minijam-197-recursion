@@ -1,12 +1,13 @@
 import { Player } from "../engine/entities/player";
+import { PushMan } from "../engine/entities/pushman";
 import { RecursionComponents } from "../engine/entities/types";
 import { GameEngine } from "../engine/gameEngine";
 import { EventType } from "../engine/types";
-import { World } from "../engine/world";
 import MessageBus from "../messageBus/MessageBus";
 import { RecursionWorld } from "../recursionWorld";
 import { ActionSystem } from "../systems/ActionSystem";
 import { CollisionSystem } from "../systems/CollisionSystem";
+import { EnemySystem } from "../systems/EnemySystem";
 import InputSystem from "../systems/InputSystem";
 import { MovementSystem } from "../systems/MovementSystem";
 import { PlaybackSystem } from "../systems/PlaybackSystem";
@@ -38,6 +39,7 @@ export default class PlayScene extends BaseScene {
         this.engine.addSystem(new MovementSystem(this.world.entityProvider));
 		this.engine.addSystem(new CollisionSystem(this, this.world));
         this.engine.addSystem(new InputSystem(this));
+        this.engine.addSystem(new EnemySystem(this, this.world));
 
         MessageBus.subscribe(EventType.RECURSE_GAME, this.recurse.bind(this));
 
@@ -59,6 +61,7 @@ export default class PlayScene extends BaseScene {
         this.world.reset();
         this.playbackSystem.restart();
 
-        this.world.createEntity(Player, { position: { x: 0, y: 0} });
+        this.world.createEntity(Player, { position: { x: 100, y: 100} });
+        this.world.createEntity(PushMan, { position: { x: 1000, y: 500 } });
     }
 }
