@@ -2,6 +2,7 @@ import BaseScene from './BaseScene';
 import sampleCutscene from '../cutscenes/sampleCutscene';
 import { CutsceneSegment } from '../cutscenes/types';
 import * as Phaser from 'phaser';
+import { CutsceneHelpers } from '../cutscenes/CutsceneHelpers';
 
 export default class CutsceneTest extends BaseScene {
   constructor() {
@@ -54,19 +55,7 @@ export default class CutsceneTest extends BaseScene {
 
     // Fade transition for text only
     if (segment.transition === 'fade') {
-      console.log("fading in text chunks");
-      this.textObjs.forEach(obj => {
-        obj.setAlpha(0);
-        this.tweens.add({
-          targets: obj,
-          alpha: 1,
-          duration: 500,
-          ease: 'Linear',
-          onComplete: () => {
-            console.log("text chunk faded in");
-          }
-        });
-      });
+      this.textObjs.forEach(obj => CutsceneHelpers.fadeInText(this, obj, 500));
     }
   }
 
