@@ -30,14 +30,35 @@ export default class CutsceneTest extends BaseScene {
     this.textObjs.forEach(obj => obj.destroy());
     this.textObjs = [];
 
-    // Show image (always appears instantly)
+    // IMAGE TRANSITION
     this.imageObj = this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY - 100,
       segment.imageKey
     ).setOrigin(0.5);
+    switch (segment.imageTransition) {
+      case 'fade':
+        CutsceneHelpers.fadeInObject(this, this.imageObj, 500);
+        break;
+      case 'slide-left':
+        CutsceneHelpers.slideInObject(this, this.imageObj, 'left', 500);
+        break;
+      case 'slide-right':
+        CutsceneHelpers.slideInObject(this, this.imageObj, 'right', 500);
+        break;
+      case 'slide-fade-left':
+        CutsceneHelpers.slideFadeInObject(this, this.imageObj, 'left', 500);
+        break;
+      case 'slide-fade-right':
+        CutsceneHelpers.slideFadeInObject(this, this.imageObj, 'right', 500);
+        break;
+      case 'instant':
+      default:
+        // No animation
+        break;
+    }
 
-    // Show text chunks (stacked vertically)
+    // TEXT TRANSITION
     segment.textChunks.forEach((text, i) => {
       const textObj = this.add.text(
         this.cameras.main.centerX,
@@ -51,12 +72,28 @@ export default class CutsceneTest extends BaseScene {
         }
       ).setOrigin(0.5);
       this.textObjs.push(textObj);
+      switch (segment.textTransition) {
+        case 'fade':
+          CutsceneHelpers.fadeInObject(this, textObj, 500);
+          break;
+        case 'slide-left':
+          CutsceneHelpers.slideInObject(this, textObj, 'left', 500);
+          break;
+        case 'slide-right':
+          CutsceneHelpers.slideInObject(this, textObj, 'right', 500);
+          break;
+        case 'slide-fade-left':
+          CutsceneHelpers.slideFadeInObject(this, textObj, 'left', 500);
+          break;
+        case 'slide-fade-right':
+          CutsceneHelpers.slideFadeInObject(this, textObj, 'right', 500);
+          break;
+        case 'instant':
+        default:
+          // No animation
+          break;
+      }
     });
-
-    // Fade transition for text only
-    if (segment.transition === 'fade') {
-      this.textObjs.forEach(obj => CutsceneHelpers.fadeInText(this, obj, 500));
-    }
   }
 
   showSegment(segment: CutsceneSegment) {

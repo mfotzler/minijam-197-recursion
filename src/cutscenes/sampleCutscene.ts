@@ -8,7 +8,8 @@ const sampleCutscene: Cutscene = {
         'In the beginning, there was recursion.',
         'It called itself, again and again.'
       ],
-      transition: 'fade'
+      imageTransition: 'slide-left',
+      textTransition: 'fade'
     },
     {
       imageKey: 'segfault-squad',
@@ -16,7 +17,8 @@ const sampleCutscene: Cutscene = {
         'But beware the infinite loop...',
         "Some say it's where legends are born."
       ],
-      transition: 'fade'
+      imageTransition: 'fade',
+      textTransition: 'slide-fade-right'
     }
   ]
 };
