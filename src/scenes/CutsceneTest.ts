@@ -26,8 +26,8 @@ export default class CutsceneTest extends BaseScene {
 
   playSegment(segment: CutsceneSegment) {
     this.clearSegmentObjects();
-  this.imageObject = this.createImage(segment);
-  this.textObjects = this.createTextChunks(segment);
+    this.imageObject = this.createImage(segment);
+    this.textObjects = this.createTextChunks(segment);
   }
 
   clearSegmentObjects() {
@@ -42,27 +42,7 @@ export default class CutsceneTest extends BaseScene {
       this.cameras.main.centerY - 100,
       segment.imageKey
     ).setOrigin(0.5);
-    switch (segment.imageTransition) {
-      case 'fade':
-        CutsceneHelpers.fadeInObject(this, imageObject, 500);
-        break;
-      case 'slide-left':
-        CutsceneHelpers.slideInObject(this, imageObject, 'left', 500);
-        break;
-      case 'slide-right':
-        CutsceneHelpers.slideInObject(this, imageObject, 'right', 500);
-        break;
-      case 'slide-fade-left':
-        CutsceneHelpers.slideFadeInObject(this, imageObject, 'left', 500);
-        break;
-      case 'slide-fade-right':
-        CutsceneHelpers.slideFadeInObject(this, imageObject, 'right', 500);
-        break;
-      case 'instant':
-      default:
-        // No animation
-        break;
-    }
+    CutsceneHelpers.applyTransition(this, segment.imageTransition, imageObject);
     return imageObject;
   }
 
@@ -79,27 +59,7 @@ export default class CutsceneTest extends BaseScene {
           align: 'center',
         }
       ).setOrigin(0.5);
-      switch (segment.textTransition) {
-        case 'fade':
-          CutsceneHelpers.fadeInObject(this, textObject, 500);
-          break;
-        case 'slide-left':
-          CutsceneHelpers.slideInObject(this, textObject, 'left', 500);
-          break;
-        case 'slide-right':
-          CutsceneHelpers.slideInObject(this, textObject, 'right', 500);
-          break;
-        case 'slide-fade-left':
-          CutsceneHelpers.slideFadeInObject(this, textObject, 'left', 500);
-          break;
-        case 'slide-fade-right':
-          CutsceneHelpers.slideFadeInObject(this, textObject, 'right', 500);
-          break;
-        case 'instant':
-        default:
-          // No animation
-          break;
-      }
+      CutsceneHelpers.applyTransition(this, segment.textTransition, textObject);
       return textObject;
     });
   }

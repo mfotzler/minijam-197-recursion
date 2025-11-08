@@ -1,6 +1,29 @@
 import * as Phaser from 'phaser';
 
 export class CutsceneHelpers {
+  static applyTransition(scene: Phaser.Scene, transition: string, object: Phaser.GameObjects.Image | Phaser.GameObjects.Text) {
+    switch (transition) {
+      case 'fade':
+        CutsceneHelpers.fadeInObject(scene, object, 500);
+        break;
+      case 'slide-left':
+        CutsceneHelpers.slideInObject(scene, object, 'left', 500);
+        break;
+      case 'slide-right':
+        CutsceneHelpers.slideInObject(scene, object, 'right', 500);
+        break;
+      case 'slide-fade-left':
+        CutsceneHelpers.slideFadeInObject(scene, object, 'left', 500);
+        break;
+      case 'slide-fade-right':
+        CutsceneHelpers.slideFadeInObject(scene, object, 'right', 500);
+        break;
+      case 'instant':
+      default:
+        // No animation
+        break;
+    }
+  }
   static fadeInObject(scene: Phaser.Scene, gameObject: Phaser.GameObjects.Text | Phaser.GameObjects.Image, duration: number = 500) {
     gameObject.setAlpha(0);
     scene.tweens.add({
