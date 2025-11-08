@@ -13,6 +13,8 @@ export default class BaseScene extends Phaser.Scene {
 	preload() {
 		this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
 		this.load.image('segfault-squad', 'assets/segfault_squad.png');
+		this.load.image('recursion-fairy-tired', 'assets/recursion_fairy_tired.png');
+		this.load.image('garbage-collectors', 'assets/garbage_collectors.png');
 
 		this.load.bitmapFont(
 			'rubik',
