@@ -32,4 +32,10 @@ export default class MainMenu extends BaseScene {
             }
 		).setOrigin(0.5);
 	}
+
+	update() {
+		if (this.input.activePointer.isDown) {
+			this.fadeToScene('Play');
+		}
+	}
 }

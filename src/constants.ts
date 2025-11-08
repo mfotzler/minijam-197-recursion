@@ -1,0 +1,4 @@
+export const PHYSICS_CONSTANTS = {
+    GRAVITY: 2,
+    MAX_DOWNWARD_VELOCITY: 25,
+};

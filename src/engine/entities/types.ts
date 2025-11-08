@@ -31,3 +31,26 @@ export const isRenderableEntity = <TComponents>(
 ): entity is EntityDefinition<TComponents & RenderableEntityComponents> => {
 	return 'render' in entity && 'facing' in entity;
 };
+
+export interface PositionComponent {
+	x: number;
+	y: number;
+}
+
+export interface MovementComponent {
+	hasGravity?: boolean;
+}
+
+export interface CollisionComponent {
+	blocked?: Phaser.Types.Physics.Arcade.ArcadeBodyCollision;
+	withEnvironment?: boolean;
+	withPlayer?: boolean;
+}
+
+export interface RecursionComponents {
+	position?: PositionComponent;
+	movement?: MovementComponent;
+	facing?: FacingComponentBase;
+	collision?: CollisionComponent;
+	render?: RenderComponentBase;
+}
