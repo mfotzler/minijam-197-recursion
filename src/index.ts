@@ -3,6 +3,7 @@ import MessageBus from './messageBus/MessageBus';
 import MainMenu from './scenes/MainMenu';
 import PlayScene from './scenes/PlayScene';
 import InMemoryStorageProvider from './messageBus/inMemoryStorageProvider';
+import CutsceneTest from './scenes/CutsceneTest';
 
 MessageBus.initialize(new InMemoryStorageProvider());
 
@@ -17,7 +18,7 @@ new Phaser.Game({
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
-  scene: [MainMenu, PlayScene],
+  scene: [MainMenu, CutsceneTest, PlayScene],
   physics: {
     default: 'arcade',
     arcade: {

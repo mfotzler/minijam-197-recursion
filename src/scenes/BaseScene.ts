@@ -10,6 +10,11 @@ export default class BaseScene extends Phaser.Scene {
 	private isFading = false;
 	protected engine: GameEngine;
 
+	preload() {
+		this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
+		this.load.image('segfault-squad', 'assets/segfault_squad.png');
+	}
+
 	init(_data?: unknown) {
 		MessageBus.clearAllSubscribers();
 
