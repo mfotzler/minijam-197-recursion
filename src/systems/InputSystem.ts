@@ -1,15 +1,12 @@
 import * as Phaser from 'phaser';
 import { EventType, InputType, StepData, System } from '../engine/types';
-import { EntityProvider } from '../engine/world/types';
 import MessageBus from '../messageBus/MessageBus';
-import { RecursionComponents } from '../engine/entities/types';
 
 export default class InputSystem implements System {
     private totalTime = 0;
 
 	constructor(
-		scene: Phaser.Scene,
-		private entityProvider: EntityProvider<RecursionComponents>
+		scene: Phaser.Scene
 	) {
         scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
             if (pointer.leftButtonDown()) {
@@ -33,21 +30,13 @@ export default class InputSystem implements System {
 	}
 
     private onLeftMouseDown() {
-        const player = this.getPlayer();
-        if (player) {
-            const { transform, body } = player.render.sprite;
-            body.velocity.x = 30;
-            MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStart, time: this.totalTime });
-        }
+        MessageBus.sendMessage(EventType.ACT_INPUT, { input: InputType.RunStart });
+        MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStart, time: this.totalTime });
     }
 
     private onLeftMouseUp() {
-        const player = this.getPlayer();
-        if (player) {
-            const { transform, body } = player.render.sprite;
-            body.velocity.x = 0;
-            MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStop, time: this.totalTime });
-        }
+        MessageBus.sendMessage(EventType.ACT_INPUT, { input: InputType.RunStop });
+        MessageBus.sendMessage(EventType.RECORD_INPUT, { input: InputType.RunStop, time: this.totalTime });
     }
 
     private onRightMouseDown() {
@@ -56,9 +45,5 @@ export default class InputSystem implements System {
 
     private onRightMouseUp() {
 
-    }
-
-    private getPlayer() {
-        return this.entityProvider.entities.find(e => e.isPlayer);
     }
 }

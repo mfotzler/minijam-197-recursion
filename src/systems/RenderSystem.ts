@@ -52,6 +52,14 @@ export default class RenderSystem<TComponents> implements System {
 		});
 	}
 
+	destroyAll() {
+		this.entityProvider.entities.forEach(e => {
+			if (isRenderableEntity(e) && e.render.sprite) {
+				this.renderer.destroy(e.id, e.render.sprite);
+			}
+		})
+	}
+
 	private ensureEntityHasSprite(
 		entity: EntityDefinition<TComponents & RenderableEntityComponents>
 	) {
