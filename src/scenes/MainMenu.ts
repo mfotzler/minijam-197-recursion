@@ -51,6 +51,15 @@ export default class MainMenu extends BaseScene {
 
 		UIHelpers.addCenteredButton(
 			this,
+			this.cameras.main.centerY + 170,
+			'Intro',
+			() => {
+				this.fadeToScene('IntroCutscene');
+			}
+		);
+
+		UIHelpers.addCenteredButton(
+			this,
 			this.cameras.main.centerY + 220,
 			'Play',
 			() => {
