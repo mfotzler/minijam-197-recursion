@@ -3,7 +3,7 @@ import { Cutscene } from './types';
 const introCutscene: Cutscene = {
     segments: [
         {
-            imageKey: 'recursion-fairy-tired',
+            imageKey: 'recursion-fairy-at-desk',
             textChunks: [
                 'Recursion Realm, 3124 A.D.',
                 'The recursion fairy tires of her task.'
